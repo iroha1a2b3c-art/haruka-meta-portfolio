@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DESIGN | HARUKA meta-PORTFOLIO</title>
+    <title>DESIGN - HARUKA meta-PORTFOLIO</title>
+    <!-- Google Fonts: Noto Sans JP -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
@@ -13,23 +14,31 @@
 </head>
 
 <body class="design-page">
-    <!-- Header -->
+   <!-- ===============================
+ Header
+ =============================== -->
     <header class="header">
         <div class="header__container">
             <div class="header__logo">
-                <a href="index.html" class="header__logo-link">
-                    HARUKA <br class="u-mobile-break">meta-PORTFOLIO
-                </a>
+                <a href="index.html" class="header__logo-link">HARUKA <br class="u-mobile-break">meta-PORTFOLIO</a>
             </div>
             <nav class="header__nav">
                 <ul class="header__nav-list">
-                    <li class="header__nav-item"><a href="index.html#top" class="header__nav-link">TOP</a></li>
-                    <li class="header__nav-item"><a href="design.html" class="header__nav-link is-active">DESIGN</a>
+                    <li class="header__nav-item">
+                        <a href="index.html" class="header__nav-link">TOP</a>
                     </li>
-                    <li class="header__nav-item"><a href="index.html#process" class="header__nav-link">PROCESS</a></li>
-                    <li class="header__nav-item"><a href="index.html#skill" class="header__nav-link">SKILL</a></li>
-                    <li class="header__nav-item"><a href="index.html#profile" class="header__nav-link">PROFILE</a></li>
-                    <li class="header__nav-item"><a href="index.html#contact" class="header__nav-link">CONTACT</a></li>
+                    <li class="header__nav-item">
+                        <a href="design.html" class="header__nav-link">DESIGN</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="process.html" class="header__nav-link">PROCESS</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="profile.html" class="header__nav-link">PROFILE</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="contact.html" class="header__nav-link">CONTACT</a>
+                    </li>
                 </ul>
             </nav>
             <button class="header__menu-toggle" aria-label="メニューを開く">
@@ -38,64 +47,344 @@
                 <span class="header__menu-bar"></span>
             </button>
         </div>
+
+        <!-- ===============================
+    Mobile Menu Overlay
+     =============================== -->
+        <div class="mobile-menu-overlay">
+            <div class="mobile-menu">
+                <div class="mobile-menu__header">
+                    <div class="mobile-menu__logo">
+                        <a href="index.html" class="mobile-menu__logo-link">HARUKA<br>meta-PORTFOLIO</a>
+                    </div>
+                    <button class="mobile-menu__close" aria-label="メニューを閉じる">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 8L8 24M8 8L24 24" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <nav class="mobile-menu__nav">
+                    <ul class="mobile-menu__list">
+                        <li class="mobile-menu__item">
+                            <a href="index.html" class="mobile-menu__link">TOP</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="design.html" class="mobile-menu__link">DESIGN</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="process.html" class="mobile-menu__link">PROCESS</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="profile.html" class="mobile-menu__link">PROFILE</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="contact.html" class="mobile-menu__link">CONTACT</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
     </header>
 
-    <!-- Main -->
+    <!-- Main Content -->
     <main class="Main_Content_Group">
+
         <!-- ===============================
-         Section_Title_Full
+         Section: Design Introduction
          =============================== -->
-        <section class="Section_Title_Full" id="design-title">
-            <div class="Container_Title_1200">
-                <h1 class="Section_Title_Full__heading">DESIGN</h1>
-                <p class="Section_Title_Full__lead">
-                    主要テーマはBtoB企業のコーポレートサイト。<br>
-                    デザインコンセプトにおける<span class="Text__highlight">カラーパレット、タイポグラフィ、</span>そして<span
-                        class="Text__highlight">再利用性の高いコンポーネントシステムで、</span><br>
-                    コーディングを見越したデザインシステムを構築し、高速なサイト制作を可能にしました。
-                </p>
+        <section class="Section_Full" id="design-intro">
+            <div class="Container_1200">
+                <!-- セクションヘッダー -->
+                <div class="Section_Full__header">
+                    <h1 class="Section_Full__title">DESIGN</h1>
+                </div>
+
+                <!-- 説明文 -->
+                <div class="Section_content_Description">
+                    <p class="Section_content_Description__text">
+                        主要テーマはBtoB企業のコーポレートサイト。<br>
+                        デザインカンプ制作における<span class="Text__highlight">カラーパレット、タイポグラフィ</span>、<br>
+                        そして<span class="Text__highlight">再利用性の高いコンポーネントシステム</span>で、コーディングを見据えたデザインシステムを構築しました。
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- ===============================
-         Section_Color_Full
+         Section: Color Palette
          =============================== -->
-        <section class="Section_Color_Full" id="color">
-            <div class="Container_Color_1200">
-                <!-- <h2 class="Section_Color_Full__title">カラーパレット</h2> -->
-<!-- セクションヘッダー -->
-                <div class="Section_Concept_Full__header">
+        <section class="Section_Full background-alternate" id="color-palette">
+            <div class="Container_1200">
+                <!-- セクションヘッダー -->
+                <div class="Section_Full__header">
                     <h2 class="Section_Full__title">カラーパレット</h2>
                 </div>
-                <p class="Section_Color_Full__description">
-                    私の好きなグリーン系とブルー系を中心に、<span class="Text__highlight">BtoBコーポレートサイトをイメージ</span>しました。<br>
-                    メインブランド色は深みのあるグリーン系。そこに暖かみのあるテラコッタ系を組み合わせ、
-                    明るい背景と中間色を加えることで、<span class="Text__highlight">落ち着きと洗練された印象を与えるトーン構成</span>です。
-                </p>
+
+                <!-- 説明文 -->
+                <div class="Section_content_Description">
+                    <p class="Section_content_Description__text">
+                        <span class="Text__highlight">BtoBコーポレートサイトをイメージ</span>しました。<br>
+                        メインブランド色は深みのあるグリーン。そこに暖かみのあるテラコッタを組み合わせ、<br>
+                        明るい背景と中間色を加えることで、<span class="Text__highlight">落ち着きと洗練された印象を与えるトーン構成</span>です。
+                    </p>
+                </div>
+
+                <!-- カラーパレット -->
+                <div class="Color_Palette_Grid">
+                    <!-- Primary Color -->
+                    <div class="Color_Card Color_Card--primary">
+                        <div class="Color_Card__swatch"></div>
+                        <div class="Color_Card__info">
+                            <h3 class="Color_Card__title">Primary Color</h3>
+                            <p class="Color_Card__code">#065758</p>
+                            <p class="Color_Card__description">
+                                深みのある青緑（ダークシアン）で、BtoBサイトに必要な信頼感と誠実さを表現します。強いコントラストでアクションを促す要素に使用します。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Color -->
+                    <div class="Color_Card Color_Card--secondary">
+                        <div class="Color_Card__swatch"></div>
+                        <div class="Color_Card__info">
+                            <h3 class="Color_Card__title">Secondary Color</h3>
+                            <p class="Color_Card__code">#C46960</p>
+                            <p class="Color_Card__description">
+                                暖かみのあるテラコッタ系は、グリーン系の主要色と補色に近い関係です。強い視認性と親しみやすさを提供し、効果的なアクセントになります。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Text Color -->
+                    <div class="Color_Card Color_Card--text">
+                        <div class="Color_Card__swatch"></div>
+                        <div class="Color_Card__info">
+                            <h3 class="Color_Card__title">Text Color</h3>
+                            <p class="Color_Card__code">#393939</p>
+                            <p class="Color_Card__description">
+                                完全な黒（#000000）を避け、わずかにグレーがかった色で、コントラストを保ちつつ目の負担を軽減し、洗練された印象を与えます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Background Color -->
+                    <div class="Color_Card Color_Card--background">
+                        <div class="Color_Card__swatch"></div>
+                        <div class="Color_Card__info">
+                            <h3 class="Color_Card__title">Background Color</h3>
+                            <p class="Color_Card__code">#FFFFFF</p>
+                            <p class="Color_Card__description">
+                                清潔感を維持する基本的な背景色で、コンテンツの可読性と視認性を最大化します。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Surface -->
+                    <div class="Color_Card Color_Card--surface">
+                        <div class="Color_Card__swatch"></div>
+                        <div class="Color_Card__info">
+                            <h3 class="Color_Card__title">Surface</h3>
+                            <p class="Color_Card__code">#A9D4D6</p>
+                            <p class="Color_Card__description">
+                                主要色を薄くした透明感のある中間色です。コンテンツの区切りに使用し、デザインにリズムを加えます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Primary 400 -->
+                    <div class="Color_Card Color_Card--primary-400">
+                        <div class="Color_Card__swatch"></div>
+                        <div class="Color_Card__info">
+                            <h3 class="Color_Card__title">Primary 400</h3>
+                            <p class="Color_Card__code">#82C3C5</p>
+                            <p class="Color_Card__description">
+                                主要色（#065758）よりも明るい明度を持ち、ホバーやアクティブな状態を示す際に使用します。ブランドの一貫性を保ちつつ、UIに動きを与えます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ===============================
-         Section_Font_Full
+         Section: Typography
          =============================== -->
-        <section class="Section_Font_Full" id="typography">
-            <div class="Container_Font_1200">
-                <!-- <h2 class="Section_Font_Full__title">タイポグラフィ</h2> -->
-<!-- セクションヘッダー -->
-                <div class="Section_Concept_Full__header">
+        <section class="Section_Full" id="typography">
+            <div class="Container_1200">
+                <!-- セクションヘッダー -->
+                <div class="Section_Full__header">
                     <h2 class="Section_Full__title">タイポグラフィ</h2>
                 </div>
-                <p class="Section_Font_Full__description">
-                    主要フォントは「Noto Sans JP」です。<br>
-                    丸みを帯びた字形はカラーパレットのテラコッタ系と調和し、サイトに親しみやすいトーンを生み出します。
-                    <span class="Text__highlight">ポートフォリオサイトとして表示速度を最優先</span>するため、レスポンシブ環境で必須の高い可読性と、
-                    容量の少ないWebフォントを選択することで、読み込みへの影響を最小限に抑えています。
-                </p>
+
+                <!-- 説明文 -->
+                <div class="Section_content_Description">
+                    <p class="Section_content_Description__text">
+                        主要フォントは<span class="Text__highlight">「Noto Sans JP」</span>です。<br>
+                        環境に左右されない安定したレンダリングでデザイン崩れを防止し、<br>
+                        読み込みへの影響を最小限に抑え、<span class="Text__highlight">実装効率と表示速度を最優先</span>しました。
+                    </p>
+                </div>
+
+                <!-- タイポグラフィ例 -->
+                <div class="Typography_Examples">
+                    <div class="Typography_Example">
+                        <h1 class="Typography_Example__sample Typography_Example__sample--H1">HARUKA meta-PORTFOLIO:
+                            AIアシスタントと共創するメタポートフォリオサイト</h1>
+                        <div class="Typography_Example__info">
+                            <span class="Typography_Example__label">H1</span>
+                            <span class="Typography_Example__specs">Heavy / 44px / line-height 1.4 /
+                                ※実装時は可変</span>
+                        </div>
+                    </div>
+
+                    <div class="Typography_Example">
+                        <h2 class="Typography_Example__sample Typography_Example__sample--H2">HARUKA meta-PORTFOLIO:
+                            AIアシスタントと共創するメタポートフォリオサイト</h2>
+                        <div class="Typography_Example__info">
+                            <span class="Typography_Example__label">H2</span>
+                            <span class="Typography_Example__specs">Bold / 32px / line-height 1.4 /
+                                ※実装時は可変</span>
+                        </div>
+                    </div>
+
+                    <div class="Typography_Example">
+                        <h3 class="Typography_Example__sample Typography_Example__sample--H3">HARUKA meta-PORTFOLIO:
+                            AIアシスタントと共創するメタポートフォリオサイト</h3>
+                        <div class="Typography_Example__info">
+                            <span class="Typography_Example__label">H3</span>
+                            <span class="Typography_Example__specs">Medium / 22px / line-height 1.4 /
+                                ※実装時は可変</span>
+                        </div>
+                    </div>
+
+                    <div class="Typography_Example">
+                        <p class="Typography_Example__sample Typography_Example__sample--body">HARUKA meta-PORTFOLIO:
+                            AIアシスタントと共創するメタポートフォリオサイト</p>
+                        <div class="Typography_Example__info">
+                            <span class="Typography_Example__label">本文</span>
+                            <span class="Typography_Example__specs">Regular / 16px / line-height 1.6 /
+                                ※実装時は可変</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===============================
+         Section: Components
+         =============================== -->
+        <section class="Section_Full background-alternate" id="components">
+            <div class="Container_1200">
+                <!-- セクションヘッダー -->
+                <div class="Section_Full__header">
+                    <h2 class="Section_Full__title">コンポーネント</h2>
+                </div>
+
+                <!-- 説明文 -->
+                <div class="Section_content_Description">
+                    <p class="Section_content_Description__text">
+                        再利用性と保守性に優れたコンポーネントシステムで設計されています。<br>
+                        <span class="Text__highlight">明確な構造と命名規則でAIアシスタントを効率的に利用し、工数を大幅に削減</span>しました。<br>                    </p>
+                </div>
+
+                <!-- コンポーネント例 -->
+                <div class="Component_Examples">
+                    <!-- Button Examples -->
+                    <div class="Component_Group">
+                        <h3 class="Component_Group__title">ボタン</h3>
+                        <div class="Component_Group__items">
+                            <a class="Button Button--primary">
+                                <span>制作過程を見る</span>
+                            </a>
+                            <a class="Button Button--secondary">
+                                <span>制作過程を見る</span>
+                            </a>
+                            <a class="Button Button--outline">
+                                <span>制作過程を見る</span>
+                            </a>
+                            <a class="Button Button--text">
+                                <span>制作過程を見る</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Icon Examples -->
+                    <div class="Component_Group">
+                        <h3 class="Component_Group__title">アイコン</h3>
+                        <div class="Component_Group__items Component_Group__items--icons">
+                            <div class="Icon_Example">
+                                <img src="./img/icon/Direction_ArrowRight-TextColor.svg" alt="矢印右" class="icon"
+                                    style="width: 24px; height: 24px;">
+                                <span class="Icon_Example__label">ArrowRight</span>
+                            </div>
+                            <div class="Icon_Example">
+                                <img src="./img/icon/Info_Location.svg" alt="現在地" class="icon"
+                                    style="width: 24px; height: 24px;">
+                                <span class="Icon_Example__label">Location</span>
+                            </div>
+                            <div class="Icon_Example">
+                                <img src="./img/icon/Info_Interest.svg" alt="興味" class="icon"
+                                    style="width: 24px; height: 24px;">
+                                <span class="Icon_Example__label">Interest</span>
+                            </div>
+                            <div class="Icon_Example">
+                                <img src="./img/icon/Contact_Mail.svg" alt="メール" class="icon"
+                                    style="width: 24px; height: 24px;">
+                                <span class="Icon_Example__label">Mail</span>
+                            </div>
+                            <div class="Icon_Example">
+                                <img src="./img/icon/Social_Instagram.svg" alt="Instagram" class="icon"
+                                    style="width: 24px; height: 24px;">
+                                <span class="Icon_Example__label">Instagram</span>
+                            </div>
+                            <div class="Icon_Example">
+                                <img src="./img/icon/Info_Pen.svg" alt="ペン" class="icon"
+                                    style="width: 24px; height: 24px;">
+                                <span class="Icon_Example__label">Pen</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Component Info -->
+                    <div class="Component_Info">
+                        <div class="Component_Info__row">
+                            <span class="Component_Info__label">命名規則：</span>
+                            <span class="Component_Info__value">Category/Type/State</span>
+                        </div>
+                        <div class="Component_Info__row">
+                            <span class="Component_Info__label">実例：</span>
+                            <span class="Component_Info__value">Button/Primary/Default</span>
+                        </div>
+                        <div class="Component_Info__row">
+                            <span class="Component_Info__label"></span>
+                            <span class="Component_Info__value">Icon/Direction/ArrowRight</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===============================
+         Next Page CTA
+         =============================== -->
+        <section class="Section_Full" id="top">
+            <div class="Container_1200">
+                <!-- ボタン -->
+                <div class="NextPageCTA">
+                    <a href="process.html" class="Button Button--primary">
+                        <span>制作過程を見る</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ===============================
+ Footer
+ =============================== -->
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__copyright">
@@ -107,19 +396,24 @@
                 <p class="footer__social-label">ダミーリンク</p>
                 <ul class="footer__social-list">
                     <li class="footer__social-item">
-                        <a href="#" class="footer__social-link" aria-label="X (旧Twitter)">
-                            <img src="./img/icon/Social_Twitter.svg" alt="Xのアイコン" class="footer__social-icon">
+                        <a href="index.html" class="footer__social-link" rel="noopener noreferrer"
+                            aria-label="X (旧Twitter)">
+                            <img src="./img/icon/Social_Twitter.svg" alt="Xのアイコン" class="footer__social-icon" />
                         </a>
                     </li>
                     <li class="footer__social-item">
-                        <a href="#" class="footer__social-link" aria-label="Instagram">
-                            <img src="./img/icon/Social_Instagram.svg" alt="Instagramのアイコン" class="footer__social-icon">
+                        <a href="index.html" class="footer__social-link" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <img src="./img/icon/Social_Instagram.svg" alt="Instagramのアイコン"
+                                class="footer__social-icon" />
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </footer>
+    <script src="menu.js"></script>
+
 </body>
 
 </html>

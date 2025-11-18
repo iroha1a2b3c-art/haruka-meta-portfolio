@@ -31,6 +31,16 @@ ul {
   list-style: none;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+
 /* 
    
 /* ▼▼ タイポグラフィ基準設定 ▼▼ */
@@ -70,25 +80,36 @@ h3 {
 }
 
 h1 {
-  font-weight: 900;
-  /* Heavy */
   font-size: clamp(3rem, 2vw + 1rem, 4.4rem);
-  font-weight: 600;
   line-height: 1.4;
+  font-weight: 600;
+  /* Heavy */
 }
 
 h2 {
+  font-size: 3.2rem;
+  line-height: 1.4;
   font-weight: 700;
   /* Bold */
-  font-size: 3.3rem;
-  line-height: 1.05;
 }
 
 h3 {
+  font-size: 2.2rem;
+  line-height: 1.4;
   font-weight: 500;
   /* Medium */
-  font-size: 2.2rem;
-  line-height: 1.5;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.Text__highlight {
+  color: var(--color-secondary);
+  font-weight: 500;
 }
 
 
@@ -96,7 +117,7 @@ h3 {
    Global Layout Components（共通スタイル）
    ======================================== */
 
-   
+/* Container_1200（共通スタイル） */
 .Container_1200 {
   max-width: min(90vw, 1200px);
   margin: 0 auto;
@@ -104,28 +125,117 @@ h3 {
 }
 
 @media (max-width: 1024px) {
-  .CContainer_1200 {
+  .Container_1200 {
     padding: 0 32px;
   }
+}
 
-  @media (max-width: 767px) {
-  .Container_Hero_1200,
+@media (max-width: 767px) {
+
   .Container_1200 {
     padding: 0 2rem;
   }
 
- .Container_1200 {
+  .Container_1200 {
     padding: 0 20px;
   }
 }
 
+/* Section_Full　セクションヘッダー枠（共通スタイル） */
+.Section_Full {
+  width: 100%;
+  background-color: var(--color-background);
+  padding: 100px 0 120px;
+}
 
+/* そのセクションの背景がsurfaceの場合 */
+.background-surface {
+  background-color: var(--color-surface);
+}
 
+@media (max-width: 1024px) {
+  .Section_Full {
+    padding: 80px 0 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .Section_Full {
+    padding: 60px 0 80px;
+  }
+}
+
+/* Section_Full__content メインコンテンツ（共通スタイル） */
+.Section_Full__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* NextPageCTA ページ下部の次ページ遷移ボタンがあるセクション（共通スタイル）*/
+.NextPageCTA {
+  display: flex;
+  justify-content: center;
+}
+
+.NextPageCTA .Button--primary {
+  margin: 0 auto;
+}
 
 
 /* ========================================
-   Global Components (共通コンポーネント) - Icon, BUtton
+   Global Components (共通コンポーネント)
+   - Icon, BUtton, Section Header
    ======================================== */
+/* ========================================
+   Section Header Styling (共通コンポーネント)
+   ======================================== */
+.Section_Full__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.Section_Full__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: inline-block;
+  position: relative;
+}
+
+.Section_Full__title {
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+}
+
+/* タイトル下のアンダーライン */
+.Section_Full__title::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background-color: var(--color-primary-400);
+}
+
+/* アンダーラインの色違い */
+.underline-primary::after {
+  background-color: var(--color-primary);
+}
+
+/* =================== Section Header Responsive =================== */
+@media (max-width: 767px) {
+
+  .Section_Full__title {
+    font-size: 3.0rem;
+  }
+}
+
+
 /* ========================================
    Icon Styling (共通コンポーネント)
    ======================================== */
@@ -170,6 +280,8 @@ h3 {
   gap: 8px;
   /* 幅を自動調整しつつ折返し可能に */
   min-width: 160px;
+  position: relative;
+  /* ::afterを配置するために必要 */
 }
 
 .Button--primary {
@@ -181,13 +293,28 @@ h3 {
   background-color: var(--color-secondary);
 }
 
-.Button--icon {
-  display: inline-flex;
-  align-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  filter: var(--icon-filter, brightness(0) invert(1));
-  /* 白抜き調整 */
+/* 擬似要素としてアイコンを挿入 */
+.Button::after {
+  content: "";
+  /* 擬似要素には必須 */
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.5rem;
+
+  /* 矢印アイコン（デフォルト）の指定 */
+  background-image: url('./img/icon/Direction_ArrowRight-BackgroundColor.svg');
+  background-size: contain;
+  /* サイズに合わせて画像を調整 */
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.2s ease;
+}
+
+/* ホバー時のCSS（アイコン画像の切り替え） */
+.Button:hover::after {
+  /* ホバー時に色違いの画像に切り替え */
+  background-image: url('./img/icon/Direction_ArrowRight-BackgroundColor.svg');
 }
 
 /* ========================================
@@ -332,227 +459,7 @@ h3 {
   line-height: 1.33;
   color: var(--color-background);
   background-color: var(--color-text);
-}
-
-.footer__copyright-text {
-  font-size: 1.4rem;
-  line-height: 1.33;
-  opacity: 0.9;
-}
-
-.footer__social-label {
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 1.33;
-}
-
-/* =================== Footer Responsive =================== */
-@media (max-width: 767px) {
-  .footer__container {
-    max-width: 1600px;
-  }
-
-  .footer__copyright-text {
-    font-size: 1.2rem;
-    line-height: 1.33;
-  }
-}
-
-/* Large Desktop */
-@media (min-width: 1440px) {
-
-  .footer__container {
-    max-width: 1600px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ======================================== Section: Hero ======================================== */
-.Section_Hero_Full {
-  width: 100%;
-  background-color: var(--color-background);
-  background-image: url("img/bg_hero_full.png");
-  background-repeat: no-repeat;
-  background-position: center right;
-  background-size: cover;
-  padding-top: var(--header-height);
-  padding-bottom: 120px;
-}
-
-/* ========================================
-   Responsive (PC only)
-   背景画像サイズをSection_Hero_Full幅の80%に調整
-   ======================================== */
-@media (min-width: 1024px) {
-  .Section_Hero_Full {
-    background-size: 80% auto;
-  }
-}
-
-.Container_Hero_1200 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 60px;
-  max-width: min(90vw, 1200px);
-  margin: 0 auto;
-  padding: 0 4rem;
-}
-
-/* テキスト側（左） */
-.Content_Hero_Main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 560px;
-  gap: 24px;
-}
-
-.Content_Hero_Main__buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* 画像側（右） */
-.Content_Hero_Img {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.img_Hero_Main {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ========================================
-   Section_Concept_Full
-   ======================================== */
-.Section_Concept_Full {
-  width: 100%;
-  background-color: var(--color-background);
-  padding: 100px 0 120px;
-}
-
-/* .Container_Concept_1200 {
-  max-width: min(90vw, 1200px);
-  margin: 0 auto;
-  padding: 0 4rem;
-} */
-
-/* ========================================
-   Section Header
-   ======================================== */
-.Section_Concept_Full__header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-/* .Section_Concept_Full__title {
-  margin-bottom: 0;
-  position: relative;
-  display: inline-block;
-} */
-
-.Section_Full__title {
-  margin-bottom: 0;
-  position: relative;
-  display: inline-block;
-}
-
-/* タイトル下のアンダーライン */
-.Section_Full__title::after {
-  content: '';
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 4px;
-  background-color: var(--color-primary-400);
-}
-
-.underline-primary::after {
-  background-color: var(--color-primary);
-}
-
-/* ========================================
-   Main Content
-   ======================================== */
-.Section_Concept_Full__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
-
-/* ========================================
-   Concept Description
-   ======================================== */
-.Concept_Description {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.Concept_Description__text {
-  margin: 0;
-}
-
-.Text__highlight {
-  color: var(--color-secondary);
-  font-weight: 500;
-}
-
-
-
-
-/* ======================================== Footer ======================================== */
-.footer {
-  background-color: var(--color-text);
-  color: var(--color-background);
   padding: 40px 0;
-  margin-top: 80px;
-}
-
-.top-page .footer {
-  margin-top: 0;
 }
 
 .footer__container {
@@ -567,8 +474,10 @@ h3 {
 }
 
 .footer__copyright-text {
-  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.33;
   opacity: 0.9;
+  color: var(--color-background);
 }
 
 .footer__social {
@@ -578,9 +487,10 @@ h3 {
 }
 
 .footer__social-label {
-  font-size: 14px;
-  font-weight: 600;
-  margin-right: 8px;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.33;
+  color: var(--color-background);
 }
 
 .footer__social-list {
@@ -622,49 +532,311 @@ h3 {
   border: 0;
 }
 
-/* ======================================== Main Content Group ======================================== */
-.Main_Content_Group {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+/* =================== Footer Responsive =================== */
+@media (max-width: 767px) {
+  .footer__container {
+    max-width: 1600px;
+  }
+
+  .footer__copyright-text {
+    font-size: 1.2rem;
+    line-height: 1.33;
+  }
 }
 
+/* Large Desktop */
+@media (min-width: 1440px) {
 
+  .footer__container {
+    max-width: 1600px;
+  }
+}
 
 /* ========================================
-   Section_Process_Highlights_Full
+   Mobile Menu Overlay
    ======================================== */
-.Section_Process_Highlights_Full {
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: var(--color-surface);
-  padding: 100px 0 120px;
+  height: 100vh;
+z-index: 9999;
+  display: none;
+  opacity: 0;
+    overflow-y: auto; /* ← スクロールを許可 */
+  -webkit-overflow-scrolling: touch; /* iOS対応 */
 }
 
-.Container_Process_1200 {
+.mobile-menu-overlay.is-open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* メニューコンテナ */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+    min-height: 100vh;
+}
+
+/* メニューヘッダー */
+.mobile-menu__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  height: var(--header-height);
+  background-color: var(--color-background);
+  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu__logo-link {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  font-size: 2.0rem;
+  line-height: 1;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.mobile-menu__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.mobile-menu__close:hover {
+  color: var(--color-secondary);
+}
+
+/* メニューナビゲーション */
+.mobile-menu__nav {
+  flex: 1;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-y: auto; /* ← ナビ部分だけスクロール可 */
+  max-height: calc(100vh - var(--header-height)); /* ヘッダー分を除外 */
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mobile-menu__item {
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.mobile-menu__link {
+  display: block;
+  padding: 24px 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1.0;
+  letter-spacing: 0.03em;
+  color: var(--color-surface);
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu__link:hover,
+.mobile-menu__link:active {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+/* Body固定（メニュー開時スクロール防止） */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ========================================
+   Mobile Menu Responsive
+   ======================================== */
+@media (max-width: 767px) {
+  .mobile-menu__header {
+    /* height: 64px; */
+    /* padding: 20px; */
+   height: var(--header-height);
+padding: 40px;
+  }
+
+  .mobile-menu__close {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-menu__nav {
+    padding: 32px 20px;
+  }
+
+  .mobile-menu__link {
+    padding: 20px 16px;
+    font-size: 1.8rem;
+  }
+}
+
+/* タブレット以上では非表示 */
+@media (min-width: 890px) {
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================== 
+Section: Hero 
+======================================== */
+.Section_Hero_Full {
+  width: 100%;
+  background-color: var(--color-background);
+  background-image: url("img/bg_hero_full.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+  padding-top: calc(var(--header-height) / 2);
+  padding-bottom: calc(var(--header-height) / 2);
+}
+
+.Container_Hero_1200 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
   max-width: min(90vw, 1200px);
   margin: 0 auto;
   padding: 0 4rem;
 }
 
-/* ------- Header ------- */
-.Section_Process_Highlights_Full__header {
+/* テキスト側（左） */
+.Content_Hero_Main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 560px;
+  gap: 24px;
+}
+
+.Content_Hero_Main__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* 画像側（右） */
+.Content_Hero_Img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.img_Hero_Main {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =================== Section: Hero Responsive =================== */
+
+@media (min-width: 1024px) {
+
+  /* Responsive (PC only)　背景画像サイズをSection_Hero_Full幅の80%に調整 */
+  .Section_Hero_Full {
+    background-size: 80% auto;
+  }
+}
+
+/* モバイル時に画像→テキストの順 */
+@media (max-width: 767px) {
+
+  .Container_Hero_1200 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 0 2rem;
+  }
+
+  .Content_Hero_Img {
+    order: 1;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Content_Hero_Main {
+    order: 2;
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ========================================
+   Concept Description
+   ======================================== */
+/* 全ページ共通予定だが、2ページ目以降にどうなるかまだ確定ではない。 */
+.Section_content_Description {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
-  margin-bottom: 48px;
 }
 
-.Section_Process_Highlights_Full__title {
-  position: relative;
-  display: inline-block;
+/* TOPだけH3タグなのでこのクラス */
+/* 他ページはpタグでSection_content_Description__textクラス予定で、Base Stylesに記述予定。 */
+.Section_Concept_Description__text {
+  margin: 0;
 }
 
-.Section_Process_Highlights_Full__title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 4px;
-  background-color: var(--color-primary);
+/* ======================================== Main Content Group ======================================== */
+.Main_Content_Group {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
+
+/* ========================================
+   Section_Process_Highlights
+   ======================================== */
 
 /* ------- Card Group ------- */
 .Process_Card_Group {
@@ -738,14 +910,14 @@ h3 {
 }
 
 
-/* ------- Button ------- */
-.Process_Button_Wrapper {
+/* ------- Button TOPページだけ------- */
+.SectionEnd_Button_Wrapper {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.Process_Button_Wrapper .Button--primary {
+.SectionEnd_Button_Wrapper .Button--primary {
   margin: 0 auto;
 }
 
@@ -754,17 +926,6 @@ h3 {
    @media (max-width: 1024px)
    ======================================== */
 @media (max-width: 1024px) {
-  .Section_Process_Highlights_Full {
-    padding: 80px 0 100px;
-  }
-
-  .Container_Process_1200 {
-    padding: 0 32px;
-  }
-
-  .Section_Process_Highlights_Full__header {
-    margin-bottom: 40px;
-  }
 
   .Process_Card_Group {
     flex-direction: column;
@@ -788,58 +949,6 @@ h3 {
    ======================================== */
 @media (max-width: 767px) {
 
-  .Container_Hero_1200,
-  .Container_Concept_1200,
-  .Container_Process_1200 {
-    padding: 0 2rem;
-  }
-
-
-  .Container_Hero_1200 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-
-  /* モバイル時に画像→テキストの順 */
-  .Content_Hero_Img {
-    order: 1;
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .Content_Hero_Main {
-    order: 2;
-    width: 100%;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .Section_Process_Highlights_Full {
-    padding: 60px 0 80px;
-  }
-
-  .Container_Process_1200 {
-    padding: 0 20px;
-  }
-
-  .Section_Process_Highlights_Full__header {
-    margin-bottom: 32px;
-  }
-
-  .Section_Process_Highlights_Full__title {
-    font-size: 3.0rem;
-  }
-
-  .Section_Process_Highlights_Full__title::after {
-    width: 50px;
-    height: 2px;
-    bottom: -10px;
-  }
-
   .Process_Card_Group {
     flex-direction: column;
     align-items: center;
@@ -855,123 +964,1064 @@ h3 {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ========================================
-   Section_Title_Full
+   DESIGN Page Specific Styles
    ======================================== */
-.Section_Title_Full {
-  width: 100%;
-  background-color: var(--color-background);
-  text-align: center;
-  padding: 120px 2rem 100px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+/* 背景色バリエーション */
+.background-alternate {
+  background-color: var(--color-background-alternate);
 }
 
-.Container_Title_1200 {
-  max-width: min(90vw, 1200px);
-  margin: 0 auto;
-}
-
-.Section_Title_Full__heading {
-  font-size: 4.4rem;
+/* アクティブなナビゲーションリンク */
+.header__nav-link--active {
   color: var(--color-primary);
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  margin-bottom: 2rem;
+  font-weight: 700;
 }
 
-.Section_Title_Full__lead {
+/* ========================================
+   Color Palette Section（修正版）
+   ======================================== */
+.Color_Palette_Grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.Color_Card {
+  background-color: var(--color-background);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Color_Card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* 色見本部分 */
+.Color_Card__swatch {
+  width: 100%;
+  height: 60px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* 情報エリア */
+.Color_Card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 24px 24px;
+}
+
+.Color_Card__title {
   font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.Color_Card__code {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  font-family: 'Courier New', monospace;
+}
+
+.Color_Card__description {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* 色別 */
+.Color_Card--primary .Color_Card__swatch {
+  background-color: var(--color-primary);
+}
+
+.Color_Card--secondary .Color_Card__swatch {
+  background-color: var(--color-secondary);
+}
+
+.Color_Card--text .Color_Card__swatch {
+  background-color: var(--color-text);
+}
+
+.Color_Card--background .Color_Card__swatch {
+  background-color: var(--color-background);
+  border: 1px solid #E0E0E0;
+}
+
+.Color_Card--surface .Color_Card__swatch {
+  background-color: var(--color-surface);
+}
+
+.Color_Card--primary-400 .Color_Card__swatch {
+  background-color: var(--color-primary-400);
+}
+
+/* ========================================
+   Typography Examples
+   ======================================== */
+.Typography_Examples {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 48px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Typography_Example {
+  border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 24px;
+}
+
+.Typography_Example:last-child {
+  border-bottom: none;
+}
+
+.Typography_Example__sample {
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+/* このセクション内だけ固定値で指定 */
+.Typography_Example__sample--H1 {
+  font-size: 44px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.Typography_Example__sample--H2 {
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.Typography_Example__sample--H3 {
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.Typography_Example__sample--body {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.Typography_Example__info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.Typography_Example__label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 60px;
+}
+
+.Typography_Example__specs {
+  font-size: 1.6rem;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+/* ========================================
+   Component Examples
+   ======================================== */
+.Component_Examples {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.Component_Group {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.Component_Group__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.Component_Group__items {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.Component_Group__items--icons {
+  gap: 32px;
+}
+
+/* Button Variants */
+/* 2つ目のボタン */
+.Button--secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.Button--secondary::after {
+  background-image: url('img/icon/Direction_ArrowRight-TextColor.svg');
+}
+
+.Button--secondary:hover {
+  opacity: 0.6;
+}
+
+.Button--secondary:hover::after {
+  background-image: url('img/icon/Direction_ArrowRight-TextColor.svg');
+}
+
+/* 3つ目のボタン */
+.Button--outline {
+  background-color: var(--color-background);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.Button--outline::after {
+  background-image: url('img/icon/Direction_ArrowRight-PrimaryColor.svg');
+}
+
+
+.Button--outline:hover {
+  background-color: var(--color-background);
+  border: 2px solid var(--color-primary-400);
+  color: var(--color-primary-400);
+}
+
+.Button--outline:hover::after {
+  background-image: url('img/icon/Direction_ArrowRight-SurfaceColor.svg');
+}
+
+/* 4つ目のボタン */
+.Button--text {
+  background-color: var(--color-background);
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.Button--text::after {
+  background-image: url('img/icon/Direction_ArrowRight-SecondaryColor.svg');
+}
+
+
+.Button--text:hover {
+  opacity: 0.4;
+}
+
+.Button--text:hover::after {
+  background-image: url('img/icon/Direction_ArrowRight-SecondaryColor.svg');
+}
+
+/* Icon Example */
+.Icon_Example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.Icon_Example__label {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+/* Component Info */
+.Component_Info {
+  background-color: var(--color-background);
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 24px;
+  border-left: 4px solid var(--color-primary);
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.Component_Info__row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
+}
+
+.Component_Info__row:last-child {
+  margin-bottom: 0;
+}
+
+.Component_Info__label {
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 100px;
+}
+
+.Component_Info__value {
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+/* ========================================
+   DESIGN Page Responsive
+   ======================================== */
+@media (max-width: 1024px) {
+  .Color_Palette_Grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .Color_Palette_Grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 24px;
+  }
+
+  .Color_Card__info {
+    padding: 20px;
+  }
+
+  .Color_Card__title {
+    font-size: 1.8rem;
+  }
+
+  .Color_Card__description {
+    font-size: 1.3rem;
+  }
+
+  .Typography_Examples {
+    gap: 32px;
+  }
+
+  .Typography_Example__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .Component_Group {
+    padding: 24px;
+  }
+
+  .Component_Group__items {
+    flex-direction: column;
+  }
+
+  .Component_Group__items--icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 横3列 */
+    gap: 24px;
+    /* アイコン間の余白 */
+    justify-items: center;
+    /* 各アイコンを中央に配置 */
+  }
+
+  .Icon_Example {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Button {
+    width: 100%;
+  }
+
+  .Component_Info__row {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================
+   PROFILE Page Specific Styles
+   ======================================== */
+
+/* ========================================
+   Skill Cards
+   ======================================== */
+.Skill_Cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.Skill_Card {
+  background-color: var(--color-background);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Skill_Card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.Skill_Card__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.Skill_Card__title {
+  color: var(--color-primary-400);
+  margin: 0;
+}
+
+.Skill_Card__duration {
+  color: var(--color-text);
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.Skill_Card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Skill_Card__list li {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+/* ========================================
+   Profile Cards
+   ======================================== */
+.Profile_Cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 48px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Profile_Card {
+  border: 2px solid var(--color-surface);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.Profile_Card__title {
+  font-size: 2.0rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-surface);
+}
+
+.Profile_Card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Profile_Card__text {
+  font-size: 1.6rem;
   line-height: 1.8;
   color: var(--color-text);
+  margin: 0;
 }
 
-/* ========================================
-   Section_Color_Full
-   ======================================== */
-.Section_Color_Full {
-  width: 100%;
-  background-color: var(--color-background-alternate);
-  padding: 100px 0 120px;
+/* Contact Items */
+.Profile_Card__content--contact {
+  gap: 20px;
 }
 
-.Container_Color_1200 {
-  max-width: min(90vw, 1200px);
-  margin: 0 auto;
-  padding: 0 4rem;
-  text-align: center;
+.Contact_Item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
-.Section_Color_Full__title {
-  font-size: 3.2rem;
+.Contact_Item__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.Contact_Item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.Contact_Item__label {
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 2.4rem;
+  color: var(--color-primary);
 }
 
-.Section_Color_Full__description {
-  font-size: 1.8rem;
-  line-height: 1.7;
+.Contact_Item__value {
+  font-size: 1.6rem;
   color: var(--color-text);
+  opacity: 0.8;
+  line-height: 1.6;
 }
 
 /* ========================================
-   Section_Font_Full
+   Message Card
    ======================================== */
-.Section_Font_Full {
-  width: 100%;
+.Message_Card {
+  display: flex;
+  gap: 32px;
+  align-items: center;
   background-color: var(--color-background);
-  padding: 100px 0 120px;
-}
-
-.Container_Font_1200 {
-  max-width: min(90vw, 1200px);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 4rem;
-  text-align: center;
 }
 
-.Section_Font_Full__title {
-  font-size: 3.2rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 2.4rem;
+.Message_Card__avatar {
+  flex-shrink: 0;
 }
 
-.Section_Font_Full__description {
-  font-size: 1.8rem;
-  line-height: 1.7;
+.Message_Card__avatar-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.Message_Card__content {
+  flex: 1;
+}
+
+.Message_Card__text {
+  font-size: 1.6rem;
+  line-height: 1.8;
   color: var(--color-text);
+  margin: 0;
 }
 
 /* ========================================
-   @media (max-width: 767px)
+   PROFILE Page Responsive
    ======================================== */
+@media (max-width: 1024px) {
+  .Skill_Cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 767px) {
-  .Section_Title_Full {
-    padding: 80px 2rem 60px;
+  .Skill_Cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  .Section_Title_Full__heading {
-    font-size: 3.2rem;
+  .Skill_Card {
+    padding: 20px;
   }
 
-  .Section_Title_Full__lead {
-    font-size: 1.6rem;
-    line-height: 1.7;
+  .Skill_Card__title {
+    font-size: 1.8rem;
   }
 
-  .Section_Color_Full,
-  .Section_Font_Full {
-    padding: 60px 2rem 80px;
+  .Profile_Card {
+    padding: 24px;
   }
 
-  .Section_Color_Full__title,
-  .Section_Font_Full__title {
-    font-size: 2.6rem;
+  .Profile_Card__title {
+    font-size: 1.8rem;
   }
 
-  .Section_Color_Full__description,
-  .Section_Font_Full__description {
-    font-size: 1.6rem;
+  .Message_Card {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .Message_Card__avatar-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .Message_Card__text {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================
+   CONTACT Page Styles
+   ======================================== */
+.Section_Contact_Full {
+  background-color: var(--color-background-alternate);
+}
+
+.Contact_Form {
+  max-width: 600px;
+  margin: 40px auto 0;
+  background-color: var(--color-background);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Contact_Form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Contact_Form__field label {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.required {
+  color: var(--color-secondary);
+  margin-left: 4px;
+}
+
+.Contact_Form__input,
+.Contact_Form__textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  transition: border-color 0.3s ease;
+}
+
+.Contact_Form__input:focus,
+.Contact_Form__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.Contact_Form__textarea {
+  resize: vertical;
+}
+
+.Contact_Form__button {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.Contact_Form__button .Button {
+  width: auto;
+  min-width: 160px;
+}
+
+/* =================== Responsive =================== */
+@media (max-width: 767px) {
+  .Contact_Form {
+    padding: 24px;
+    border-radius: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================
+   PROCESS Page Specific Styles
+   ======================================== */
+
+/* ========================================
+   Process Navigation
+   ======================================== */
+.Group_AllProcess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  /* margin-top: 48px; */
+  margin: 48px auto 0;
+  /* 左右のautoで中央化 */
+  overflow-x: auto;
+  padding: 8px 0;
+  max-width: 100%;
+  /* はみ出し防止 */
+}
+
+.Process_Nav_Item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: 80px;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 36px;
+}
+
+.Process_Nav_Item:not(:first-child) {
+  padding-left: 48px;
+}
+
+/* Process_Nav_Itemの背景色と右矢印 */
+.Process_Nav_Item__Background01 {
+  background-color: var(--color-primary);
+}
+
+.Process_Nav_Item__Background02 {
+  background: #1c6f70 url(img/AllProcess_arrow-right/PC-01.svg) no-repeat center left 0;
+  background-size: 24px;
+}
+
+.Process_Nav_Item__Background03 {
+  background: #36888a url(img/AllProcess_arrow-right/PC-02.svg) no-repeat center left 0;
+  background-size: 24px;
+}
+
+.Process_Nav_Item__Background04 {
+  background: #57a8a9 url(img/AllProcess_arrow-right/PC-03.svg) no-repeat center left 0;
+  background-size: 24px;
+}
+
+.Process_Nav_Item__Background05 {
+  background: #81c2c4 url(img/AllProcess_arrow-right/PC-04.svg) no-repeat center left 0;
+  background-size: 24px;
+}
+
+.Process_Nav_Item__number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.Process_Nav_Item__label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ========================================
+   Process Steps
+   ======================================== */
+.Process_Step {
+  margin-bottom: 80px;
+}
+
+.Process_Step:last-child {
+  margin-bottom: 0;
+}
+
+.Process_Step__header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.Process_Step__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.Process_Step__badge-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.Process_Step__badge-number {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.Process_Step__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.Process_Step__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.Process_Step__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Process_Step__subtitle {
+  font-size: 2.0rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.Process_Step__description {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.Process_Step__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Process_Step__list li {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.Process_Step__list--ordered {
+  counter-reset: step-counter;
+}
+
+.Process_Step__list--ordered li {
+  counter-increment: step-counter;
+}
+
+.Process_Step__image {
+  background-color: var(--color-background);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.Process_Step__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   PROCESS Page Responsive
+   ======================================== */
+@media (max-width: 1024px) {
+
+  .Process_Nav_Item {
+    min-width: 120px;
+    height: 70px;
+  }
+
+  .Process_Step__content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .Process_Step__image {
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .Group_AllProcess {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 8px 0;
+    height: auto;
+  }
+
+  .Process_Nav_Item {
+    flex-direction: row;
+    /* 横並びに変更 */
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    /* 数字とラベルの間隔 */
+    padding: 32px 0 0 0;
+    height: 60px;
+    min-width: 300px;
+  }
+
+  .Process_Nav_Item:first-child {
+    padding-top: 16px;
+  }
+
+  /* PC時の横方向paddingを打ち消す */
+  .Process_Nav_Item:not(:first-child) {
+    padding-left: 0;
+  }
+
+  .Process_Nav_Item:last-child {
+    height: auto;
+    padding-bottom: 16px;
+  }
+
+  /* 背景画像を下向き矢印に変更 */
+  .Process_Nav_Item__Background02 {
+    background: #1c6f70 url(img/AllProcess_arrow-right/MOBILE-01.svg) no-repeat top center;
+    background-size: 100%;
+  }
+
+  .Process_Nav_Item__Background03 {
+    background: #36888a url(img/AllProcess_arrow-right/MOBILE-02.svg) no-repeat top center;
+    background-size: 100%;
+  }
+
+  .Process_Nav_Item__Background04 {
+    background: #57a8a9 url(img/AllProcess_arrow-right/MOBILE-03.svg) no-repeat top center;
+    background-size: 100%;
+  }
+
+  .Process_Nav_Item__Background05 {
+    background: #81c2c4 url(img/AllProcess_arrow-right/MOBILE-04.svg) no-repeat top center;
+    background-size: 100%;
+  }
+
+  .Process_Nav_Item__number {
+    /* font-size: 1.6rem; */
+
+    margin-bottom: 0;
+    /* 縦方向の余白をリセット */
+  }
+
+  .Process_Nav_Item__label {
+    /* font-size: 1.1rem; */
+
+    white-space: nowrap;
+    /* 折り返し防止 */
+  }
+
+  .Process_Step {
+    margin-bottom: 60px;
+  }
+
+  .Process_Step__badge {
+    width: 80px;
+    height: 80px;
+  }
+
+  .Process_Step__badge-number {
+    font-size: 2.8rem;
+  }
+
+  .Process_Step__title {
+    font-size: 2.0rem;
+  }
+
+  .Process_Step__subtitle {
+    font-size: 1.8rem;
+  }
+
+  .Process_Step__description,
+  .Process_Step__list li {
+    font-size: 1.5rem;
   }
 }

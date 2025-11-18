@@ -14,31 +14,30 @@
 </head>
 
 <body class="top-page">
-    <!-- Header -->
+    <!-- ===============================
+ Header
+ =============================== -->
     <header class="header">
         <div class="header__container">
             <div class="header__logo">
-                <a href="#" class="header__logo-link">HARUKA <br class="u-mobile-break">meta-PORTFOLIO</a>
+                <a href="index.html" class="header__logo-link">HARUKA <br class="u-mobile-break">meta-PORTFOLIO</a>
             </div>
             <nav class="header__nav">
                 <ul class="header__nav-list">
                     <li class="header__nav-item">
-                        <a href="#top" class="header__nav-link">TOP</a>
+                        <a href="index.html" class="header__nav-link">TOP</a>
                     </li>
                     <li class="header__nav-item">
-                        <a href="#design" class="header__nav-link">DESIGN</a>
+                        <a href="design.html" class="header__nav-link">DESIGN</a>
                     </li>
                     <li class="header__nav-item">
-                        <a href="#process" class="header__nav-link">PROCESS</a>
+                        <a href="process.html" class="header__nav-link">PROCESS</a>
                     </li>
                     <li class="header__nav-item">
-                        <a href="#skill" class="header__nav-link">SKILL</a>
+                        <a href="profile.html" class="header__nav-link">PROFILE</a>
                     </li>
                     <li class="header__nav-item">
-                        <a href="#profile" class="header__nav-link">PROFILE</a>
-                    </li>
-                    <li class="header__nav-item">
-                        <a href="#contact" class="header__nav-link">CONTACT</a>
+                        <a href="contact.html" class="header__nav-link">CONTACT</a>
                     </li>
                 </ul>
             </nav>
@@ -48,16 +47,55 @@
                 <span class="header__menu-bar"></span>
             </button>
         </div>
+
+        <!-- ===============================
+    Mobile Menu Overlay
+     =============================== -->
+        <div class="mobile-menu-overlay">
+            <div class="mobile-menu">
+                <div class="mobile-menu__header">
+                    <div class="mobile-menu__logo">
+                        <a href="index.html" class="mobile-menu__logo-link">HARUKA<br>meta-PORTFOLIO</a>
+                    </div>
+                    <button class="mobile-menu__close" aria-label="メニューを閉じる">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 8L8 24M8 8L24 24" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <nav class="mobile-menu__nav">
+                    <ul class="mobile-menu__list">
+                        <li class="mobile-menu__item">
+                            <a href="index.html" class="mobile-menu__link">TOP</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="design.html" class="mobile-menu__link">DESIGN</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="process.html" class="mobile-menu__link">PROCESS</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="profile.html" class="mobile-menu__link">PROFILE</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="contact.html" class="mobile-menu__link">CONTACT</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
     <main class="Main_Content_Group">
         <!-- ===============================
-     Section_Hero_Full
+     Section: Hero 
      =============================== -->
         <section class="Section_Hero_Full" id="top">
-            <div class="Container_1200 Container_Hero_1200">
-                <!-- ↑↑Container_1200は後で消す -->
+            <div class="Container_Hero_1200">
 
                 <!-- 左側（テキスト） -->
                 <div class="Content_Hero_Main">
@@ -73,13 +111,11 @@
                         デプロイ：GitHub Pages
                     </h3>
                     <div class="Content_Hero_Main__buttons">
-                        <a href="#" class="Button Button--primary">
+                        <a href="design.html" class="Button Button--primary">
                             <span>デザインシステムを見る</span>
-                            <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
                         </a>
-                        <a href="#" class="Button Button--primary">
+                        <a href="process.html" class="Button Button--primary">
                             <span>制作過程を見る</span>
-                            <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
                         </a>
                     </div>
                 </div>
@@ -93,105 +129,105 @@
         </section>
 
         <!-- ===============================
-     Section_Concept_Full
+     Section: Concept
      =============================== -->
-        <section class="Section_Concept_Full" id="concept">
+        <section class="Section_Full" id="concept">
             <div class="Container_1200">
 
                 <!-- セクションヘッダー -->
-                <div class="Section_Concept_Full__header">
+                <div class="Section_Full__header">
                     <h2 class="Section_Full__title">コンセプト</h2>
                 </div>
 
                 <!-- メインコンテンツ -->
-                <div class="Section_Concept_Full__content">
+                <div class="Section_Full__content">
 
                     <!-- コンセプト説明テキスト -->
-                    <div class="Concept_Description">
-                        <h3 class="Concept_Description__text">
+                    <div class="Section_content_Description">
+                        <h3 class="Section_Concept_Description__text">
                             単なる成果物の掲載から一歩先へ。<br>
-                            Figmaもコーディング経験もほぼゼロのWEBデザイナーが、<br>
+                            コーディング経験が少ないWEBデザイナーが、<br>
                             <span class="Text__highlight">自作デザインを基に、AIアシスタントと共にコードを調整・最適化。</span><br>
                             一連の制作プロセスを公開し、AI時代の新しい制作アプローチを提示します。
                         </h3>
                     </div>
 
                     <!-- ボタン -->
-                    <a href="#" class="Button Button--primary">
-                        <span>デザインシステムを見る</span>
-                        <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
-                    </a>
+                    <div class="SectionEnd_Button_Wrapper">
+                        <a href="design.html" class="Button Button--primary">
+                            <span>デザインシステムを見る</span>
+                        </a>
+                    </div>
 
                 </div>
 
             </div>
         </section>
         <!-- ===============================
- Section_Process_Highlights_Full
+ Section: Process_Highlights
  =============================== -->
-        <section class="Section_Process_Highlights_Full" id="process">
+        <section class="Section_Full background-surface" id="process">
             <div class="Container_1200">
 
                 <!-- セクションタイトル -->
-                <div class="Section_Process_Highlights_Full__header">
+                <div class="Section_Full__header">
                     <h2 class="Section_Full__title underline-primary">制作過程ピックアップ</h2>
                 </div>
 
                 <!-- カード一覧 -->
                 <div class="Process_Card_Group">
                     <!-- カード1 -->
-                    <a href="#" class="Process_Card_Link">
+                    <a href="process.html#Step01" class="Process_Card_Link">
                         <div class="Process_Card">
                             <img src="./img/process-hilights/Screenshot_Day1_Original.jpg" alt="DAY1の制作過程サムネイル"
                                 class="Process_Card__img">
                             <div class="Process_Card__body">
                                 <h3 class="Process_Card__day">
                                     <img src="./img/icon/Info_Pen.svg" alt="ペンアイコン" class="Process_Card--icon icon">
-                                    DAY 1
+                                    STEP 01
                                 </h3>
-                                <h3 class="Process_Card__title">企画・アセット定義（ワイヤー／スタイル／コンポーネント）</h3>
+                                <h3 class="Process_Card__title">企画・設計・サイトコンセプトの設定</h3>
                             </div>
                         </div>
                     </a>
 
 
                     <!-- カード2 -->
-                    <a href="#" class="Process_Card_Link">
+                    <a href="process.html#Step04" class="Process_Card_Link">
                         <div class="Process_Card">
-                            <img src="./img/process-hilights/Screenshot_Day1_Original.jpg" alt="DAY1の制作過程サムネイル"
+                            <img src="./img/process-hilights/Screenshot_Day4_Original.jpg" alt="DAY1の制作過程サムネイル"
                                 class="Process_Card__img">
                             <div class="Process_Card__body">
                                 <h3 class="Process_Card__day">
                                     <img src="./img/icon/Info_Pen.svg" alt="ペンアイコン" class="Process_Card--icon icon">
-                                    DAY 1
+                                    STEP 04
                                 </h3>
-                                <h3 class="Process_Card__title">企画・アセット定義（ワイヤー／スタイル／コンポーネント）</h3>
+                                <h3 class="Process_Card__title">AIアシスタントとの制作サイクル -</h3>
                             </div>
                         </div>
                     </a>
 
 
                     <!-- カード3 -->
-                    <a href="#" class="Process_Card_Link">
+                    <a href="process.html#Step05" class="Process_Card_Link">
                         <div class="Process_Card">
                             <img src="./img/process-hilights/Screenshot_Day1_Original.jpg" alt="DAY1の制作過程サムネイル"
                                 class="Process_Card__img">
                             <div class="Process_Card__body">
                                 <h3 class="Process_Card__day">
                                     <img src="./img/icon/Info_Pen.svg" alt="ペンアイコン" class="Process_Card--icon icon">
-                                    DAY 1
+                                    STEP 05
                                 </h3>
-                                <h3 class="Process_Card__title">企画・アセット定義（ワイヤー／スタイル／コンポーネント）</h3>
+                                <h3 class="Process_Card__title">サイト公開</h3>
                             </div>
                         </div>
                     </a>
 
                 </div>
                 <!-- ボタン -->
-                <div class="Process_Button_Wrapper">
-                    <a href="#" class="Button Button--primary">
+                <div class="SectionEnd_Button_Wrapper">
+                    <a href="process.html" class="Button Button--primary">
                         <span>制作過程を見る</span>
-                        <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
                     </a>
                 </div>
             </div>
@@ -206,7 +242,9 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- ===============================
+ Footer
+ =============================== -->
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__copyright">
@@ -218,13 +256,13 @@
                 <p class="footer__social-label">ダミーリンク</p>
                 <ul class="footer__social-list">
                     <li class="footer__social-item">
-                        <a href="#" class="footer__social-link" target="_blank" rel="noopener noreferrer"
+                        <a href="index.html" class="footer__social-link" rel="noopener noreferrer"
                             aria-label="X (旧Twitter)">
                             <img src="./img/icon/Social_Twitter.svg" alt="Xのアイコン" class="footer__social-icon" />
                         </a>
                     </li>
                     <li class="footer__social-item">
-                        <a href="#" class="footer__social-link" target="_blank" rel="noopener noreferrer"
+                        <a href="index.html" class="footer__social-link" rel="noopener noreferrer"
                             aria-label="Instagram">
                             <img src="./img/icon/Social_Instagram.svg" alt="Instagramのアイコン"
                                 class="footer__social-icon" />
@@ -234,3 +272,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="menu.js"></script>
+</body>
+
+</html>
