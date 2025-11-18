@@ -1,0 +1,977 @@
+/* ========================================
+  CSS Variables (カラーパレット)
+  ======================================== */
+:root {
+  --color-primary: #065758;
+  --color-secondary: #C46960;
+  --color-text: #393939;
+  --color-background: #FFFFFF;
+  --color-surface: #A9D4D6;
+  --color-primary-400: #82C3C5;
+  --color-background-alternate: #f6f6f6;
+  --header-height: 120px;
+  --footer-height: 160px;
+}
+
+/* ========================================
+  Reset & Base Styles
+  ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 
+   
+/* ▼▼ タイポグラフィ基準設定 ▼▼ */
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px */
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 56.25%;
+    /* 1rem=9px */
+  }
+}
+
+body {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  font-weight: 400;
+  /* Regular */
+  font-size: 2.1rem;
+  /* = 21px */
+  line-height: 1.33;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  padding-top: var(--header-height);
+  margin: 0;
+}
+
+/* ▼▼ 見出し ▼▼ */
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--color-text);
+}
+
+h1 {
+  font-weight: 900;
+  /* Heavy */
+  font-size: clamp(3rem, 2vw + 1rem, 4.4rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+h2 {
+  font-weight: 700;
+  /* Bold */
+  font-size: 3.3rem;
+  line-height: 1.05;
+}
+
+h3 {
+  font-weight: 500;
+  /* Medium */
+  font-size: 2.2rem;
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   Global Layout Components（共通スタイル）
+   ======================================== */
+
+   
+.Container_1200 {
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+@media (max-width: 1024px) {
+  .CContainer_1200 {
+    padding: 0 32px;
+  }
+
+  @media (max-width: 767px) {
+  .Container_Hero_1200,
+  .Container_1200 {
+    padding: 0 2rem;
+  }
+
+ .Container_1200 {
+    padding: 0 20px;
+  }
+}
+
+
+
+
+
+/* ========================================
+   Global Components (共通コンポーネント) - Icon, BUtton
+   ======================================== */
+/* ========================================
+   Icon Styling (共通コンポーネント)
+   ======================================== */
+.icon {
+  object-fit: contain;
+}
+
+/* FooterやHeaderなど共通で使うアイコン制御 */
+.footer__social-icon,
+.header__social-icon {
+  width: var(--icon-size, 24px);
+  height: var(--icon-size, 24px);
+  filter: var(--icon-filter, brightness(0) invert(1));
+  /* 白抜き調整 */
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.footer__social-link:hover .footer__social-icon {
+  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(310deg);
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   Button Styling (共通コンポーネント)
+   ======================================== */
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  height: 60px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 400;
+  /* Regular */
+  font-size: 1.6rem;
+  /* = 21px */
+  line-height: 1.33;
+  color: var(--color-background);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  gap: 8px;
+  /* 幅を自動調整しつつ折返し可能に */
+  min-width: 160px;
+}
+
+.Button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.Button--primary:hover {
+  background-color: var(--color-secondary);
+}
+
+.Button--icon {
+  display: inline-flex;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: var(--icon-filter, brightness(0) invert(1));
+  /* 白抜き調整 */
+}
+
+/* ========================================
+  Header（共通）
+  ======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-background);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+.header__logo-link:hover {
+  opacity: 0.7;
+}
+
+/* Navigation */
+.header__nav {
+  display: none;
+}
+
+.header__nav-list {
+  display: flex;
+  gap: 0;
+  height: var(--header-height);
+}
+
+.header__nav-item {
+  height: 100%;
+}
+
+.header__nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 24px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.header__nav-link:hover,
+.header__nav-link:focus {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.header__nav-link:hover::after,
+.header__nav-link:focus::after {
+  width: 80%;
+}
+
+/* Mobile Menu Toggle */
+.header__menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header__menu-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.header__menu-toggle:hover .header__menu-bar {
+  background-color: var(--color-secondary);
+}
+
+/* ▼タイポグラフィ */
+.header__logo-link {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  font-size: 2.0rem;
+  line-height: 1;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.header__nav-link {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  font-size: 2.0rem;
+  line-height: 1.0;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* =================== Header Responsive =================== */
+/* Tablet & Desktop */
+@media (min-width: 890px) {
+
+  .header__nav {
+    display: block;
+  }
+
+  .header__menu-toggle {
+    display: none;
+  }
+}
+
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+
+  .header__container {
+    max-width: 1600px;
+  }
+}
+
+/* ========================================
+   Footer（共通）
+   ======================================== */
+.footer {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.33;
+  color: var(--color-background);
+  background-color: var(--color-text);
+}
+
+.footer__copyright-text {
+  font-size: 1.4rem;
+  line-height: 1.33;
+  opacity: 0.9;
+}
+
+.footer__social-label {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.33;
+}
+
+/* =================== Footer Responsive =================== */
+@media (max-width: 767px) {
+  .footer__container {
+    max-width: 1600px;
+  }
+
+  .footer__copyright-text {
+    font-size: 1.2rem;
+    line-height: 1.33;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+
+  .footer__container {
+    max-width: 1600px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================== Section: Hero ======================================== */
+.Section_Hero_Full {
+  width: 100%;
+  background-color: var(--color-background);
+  background-image: url("img/bg_hero_full.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+  padding-top: var(--header-height);
+  padding-bottom: 120px;
+}
+
+/* ========================================
+   Responsive (PC only)
+   背景画像サイズをSection_Hero_Full幅の80%に調整
+   ======================================== */
+@media (min-width: 1024px) {
+  .Section_Hero_Full {
+    background-size: 80% auto;
+  }
+}
+
+.Container_Hero_1200 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* テキスト側（左） */
+.Content_Hero_Main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 560px;
+  gap: 24px;
+}
+
+.Content_Hero_Main__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* 画像側（右） */
+.Content_Hero_Img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.img_Hero_Main {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   Section_Concept_Full
+   ======================================== */
+.Section_Concept_Full {
+  width: 100%;
+  background-color: var(--color-background);
+  padding: 100px 0 120px;
+}
+
+/* .Container_Concept_1200 {
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+  padding: 0 4rem;
+} */
+
+/* ========================================
+   Section Header
+   ======================================== */
+.Section_Concept_Full__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* .Section_Concept_Full__title {
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+} */
+
+.Section_Full__title {
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+}
+
+/* タイトル下のアンダーライン */
+.Section_Full__title::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background-color: var(--color-primary-400);
+}
+
+.underline-primary::after {
+  background-color: var(--color-primary);
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+.Section_Concept_Full__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ========================================
+   Concept Description
+   ======================================== */
+.Concept_Description {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Concept_Description__text {
+  margin: 0;
+}
+
+.Text__highlight {
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+
+
+
+/* ======================================== Footer ======================================== */
+.footer {
+  background-color: var(--color-text);
+  color: var(--color-background);
+  padding: 40px 0;
+  margin-top: 80px;
+}
+
+.top-page .footer {
+  margin-top: 0;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer__copyright-text {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer__social-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.footer__social-list {
+  display: flex;
+  gap: 16px;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.footer__social-link:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-3px);
+}
+
+.footer__social-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-background);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ======================================== Main Content Group ======================================== */
+.Main_Content_Group {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+
+
+/* ========================================
+   Section_Process_Highlights_Full
+   ======================================== */
+.Section_Process_Highlights_Full {
+  width: 100%;
+  background-color: var(--color-surface);
+  padding: 100px 0 120px;
+}
+
+.Container_Process_1200 {
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* ------- Header ------- */
+.Section_Process_Highlights_Full__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.Section_Process_Highlights_Full__title {
+  position: relative;
+  display: inline-block;
+}
+
+.Section_Process_Highlights_Full__title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background-color: var(--color-primary);
+}
+
+/* ------- Card Group ------- */
+.Process_Card_Group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 0 auto 32px;
+  max-width: 1200px;
+}
+
+/* カードリンク全体 */
+.Process_Card_Link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: calc((100% - 48px) / 3);
+  /* gap(24px)×2分を除いて3等分 */
+  max-width: 360px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 各カード */
+.Process_Card {
+  background-color: var(--color-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.Process_Card_Link:hover .Process_Card {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* 内部構造 */
+.Process_Card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.Process_Card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Process_Card--icon {
+  display: inline-flex;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.Process_Card__day {
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--color-primary-400);
+}
+
+.Process_Card__title {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+
+/* ------- Button ------- */
+.Process_Button_Wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Process_Button_Wrapper .Button--primary {
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   @media (max-width: 1024px)
+   ======================================== */
+@media (max-width: 1024px) {
+  .Section_Process_Highlights_Full {
+    padding: 80px 0 100px;
+  }
+
+  .Container_Process_1200 {
+    padding: 0 32px;
+  }
+
+  .Section_Process_Highlights_Full__header {
+    margin-bottom: 40px;
+  }
+
+  .Process_Card_Group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Process_Card_Link {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .Process_Card {
+    width: 100%;
+    max-width: 480px;
+    /* 任意の最大幅（中央寄せ） */
+  }
+}
+
+/* ========================================
+   @media (max-width: 767px)
+   ======================================== */
+@media (max-width: 767px) {
+
+  .Container_Hero_1200,
+  .Container_Concept_1200,
+  .Container_Process_1200 {
+    padding: 0 2rem;
+  }
+
+
+  .Container_Hero_1200 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  /* モバイル時に画像→テキストの順 */
+  .Content_Hero_Img {
+    order: 1;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Content_Hero_Main {
+    order: 2;
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .Section_Process_Highlights_Full {
+    padding: 60px 0 80px;
+  }
+
+  .Container_Process_1200 {
+    padding: 0 20px;
+  }
+
+  .Section_Process_Highlights_Full__header {
+    margin-bottom: 32px;
+  }
+
+  .Section_Process_Highlights_Full__title {
+    font-size: 3.0rem;
+  }
+
+  .Section_Process_Highlights_Full__title::after {
+    width: 50px;
+    height: 2px;
+    bottom: -10px;
+  }
+
+  .Process_Card_Group {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .Process_Card {
+    width: 100%;
+  }
+
+  .Process_Card__title {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========================================
+   Section_Title_Full
+   ======================================== */
+.Section_Title_Full {
+  width: 100%;
+  background-color: var(--color-background);
+  text-align: center;
+  padding: 120px 2rem 100px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.Container_Title_1200 {
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+}
+
+.Section_Title_Full__heading {
+  font-size: 4.4rem;
+  color: var(--color-primary);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.Section_Title_Full__lead {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+/* ========================================
+   Section_Color_Full
+   ======================================== */
+.Section_Color_Full {
+  width: 100%;
+  background-color: var(--color-background-alternate);
+  padding: 100px 0 120px;
+}
+
+.Container_Color_1200 {
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+  padding: 0 4rem;
+  text-align: center;
+}
+
+.Section_Color_Full__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2.4rem;
+}
+
+.Section_Color_Full__description {
+  font-size: 1.8rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* ========================================
+   Section_Font_Full
+   ======================================== */
+.Section_Font_Full {
+  width: 100%;
+  background-color: var(--color-background);
+  padding: 100px 0 120px;
+}
+
+.Container_Font_1200 {
+  max-width: min(90vw, 1200px);
+  margin: 0 auto;
+  padding: 0 4rem;
+  text-align: center;
+}
+
+.Section_Font_Full__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2.4rem;
+}
+
+.Section_Font_Full__description {
+  font-size: 1.8rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* ========================================
+   @media (max-width: 767px)
+   ======================================== */
+@media (max-width: 767px) {
+  .Section_Title_Full {
+    padding: 80px 2rem 60px;
+  }
+
+  .Section_Title_Full__heading {
+    font-size: 3.2rem;
+  }
+
+  .Section_Title_Full__lead {
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
+
+  .Section_Color_Full,
+  .Section_Font_Full {
+    padding: 60px 2rem 80px;
+  }
+
+  .Section_Color_Full__title,
+  .Section_Font_Full__title {
+    font-size: 2.6rem;
+  }
+
+  .Section_Color_Full__description,
+  .Section_Font_Full__description {
+    font-size: 1.6rem;
+  }
+}

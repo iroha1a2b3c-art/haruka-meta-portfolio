@@ -1,12 +1,236 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARUKA meta-PORTFOLIO</title>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>HARUKA meta-PORTFOLIO</h1>
-</body>
-</html>
+
+<body class="top-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="#" class="header__logo-link">HARUKA <br class="u-mobile-break">meta-PORTFOLIO</a>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="#top" class="header__nav-link">TOP</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#design" class="header__nav-link">DESIGN</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#process" class="header__nav-link">PROCESS</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#skill" class="header__nav-link">SKILL</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#profile" class="header__nav-link">PROFILE</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#contact" class="header__nav-link">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="header__menu-toggle" aria-label="メニューを開く">
+                <span class="header__menu-bar"></span>
+                <span class="header__menu-bar"></span>
+                <span class="header__menu-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="Main_Content_Group">
+        <!-- ===============================
+     Section_Hero_Full
+     =============================== -->
+        <section class="Section_Hero_Full" id="top">
+            <div class="Container_1200 Container_Hero_1200">
+                <!-- ↑↑Container_1200は後で消す -->
+
+                <!-- 左側（テキスト） -->
+                <div class="Content_Hero_Main">
+                    <h1 class="Content_Hero_Main__title">
+                        AIとFigmaをフル活用。<br>
+                        制作プロセス公開型<br>
+                        メタ・ポートフォリオ
+                    </h1>
+                    <h3 class="Content_Hero_Main__description">
+                        制作期間：〇日間<br>
+                        使用技術：Figma, HTML/CSS/JS<br>
+                        AIアシスタント：GitHub Copilot, Claude, GPT-5（大規模言語モデル）<br>
+                        デプロイ：GitHub Pages
+                    </h3>
+                    <div class="Content_Hero_Main__buttons">
+                        <a href="#" class="Button Button--primary">
+                            <span>デザインシステムを見る</span>
+                            <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
+                        </a>
+                        <a href="#" class="Button Button--primary">
+                            <span>制作過程を見る</span>
+                            <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 右側（画像） -->
+                <div class="Content_Hero_Img">
+                    <img src="./img/img_Hero_Main.png" alt="HARUKA meta-PORTFOLIO ヒーローイメージ" class="img_Hero_Main">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===============================
+     Section_Concept_Full
+     =============================== -->
+        <section class="Section_Concept_Full" id="concept">
+            <div class="Container_1200">
+
+                <!-- セクションヘッダー -->
+                <div class="Section_Concept_Full__header">
+                    <h2 class="Section_Full__title">コンセプト</h2>
+                </div>
+
+                <!-- メインコンテンツ -->
+                <div class="Section_Concept_Full__content">
+
+                    <!-- コンセプト説明テキスト -->
+                    <div class="Concept_Description">
+                        <h3 class="Concept_Description__text">
+                            単なる成果物の掲載から一歩先へ。<br>
+                            Figmaもコーディング経験もほぼゼロのWEBデザイナーが、<br>
+                            <span class="Text__highlight">自作デザインを基に、AIアシスタントと共にコードを調整・最適化。</span><br>
+                            一連の制作プロセスを公開し、AI時代の新しい制作アプローチを提示します。
+                        </h3>
+                    </div>
+
+                    <!-- ボタン -->
+                    <a href="#" class="Button Button--primary">
+                        <span>デザインシステムを見る</span>
+                        <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- ===============================
+ Section_Process_Highlights_Full
+ =============================== -->
+        <section class="Section_Process_Highlights_Full" id="process">
+            <div class="Container_1200">
+
+                <!-- セクションタイトル -->
+                <div class="Section_Process_Highlights_Full__header">
+                    <h2 class="Section_Full__title underline-primary">制作過程ピックアップ</h2>
+                </div>
+
+                <!-- カード一覧 -->
+                <div class="Process_Card_Group">
+                    <!-- カード1 -->
+                    <a href="#" class="Process_Card_Link">
+                        <div class="Process_Card">
+                            <img src="./img/process-hilights/Screenshot_Day1_Original.jpg" alt="DAY1の制作過程サムネイル"
+                                class="Process_Card__img">
+                            <div class="Process_Card__body">
+                                <h3 class="Process_Card__day">
+                                    <img src="./img/icon/Info_Pen.svg" alt="ペンアイコン" class="Process_Card--icon icon">
+                                    DAY 1
+                                </h3>
+                                <h3 class="Process_Card__title">企画・アセット定義（ワイヤー／スタイル／コンポーネント）</h3>
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <!-- カード2 -->
+                    <a href="#" class="Process_Card_Link">
+                        <div class="Process_Card">
+                            <img src="./img/process-hilights/Screenshot_Day1_Original.jpg" alt="DAY1の制作過程サムネイル"
+                                class="Process_Card__img">
+                            <div class="Process_Card__body">
+                                <h3 class="Process_Card__day">
+                                    <img src="./img/icon/Info_Pen.svg" alt="ペンアイコン" class="Process_Card--icon icon">
+                                    DAY 1
+                                </h3>
+                                <h3 class="Process_Card__title">企画・アセット定義（ワイヤー／スタイル／コンポーネント）</h3>
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <!-- カード3 -->
+                    <a href="#" class="Process_Card_Link">
+                        <div class="Process_Card">
+                            <img src="./img/process-hilights/Screenshot_Day1_Original.jpg" alt="DAY1の制作過程サムネイル"
+                                class="Process_Card__img">
+                            <div class="Process_Card__body">
+                                <h3 class="Process_Card__day">
+                                    <img src="./img/icon/Info_Pen.svg" alt="ペンアイコン" class="Process_Card--icon icon">
+                                    DAY 1
+                                </h3>
+                                <h3 class="Process_Card__title">企画・アセット定義（ワイヤー／スタイル／コンポーネント）</h3>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                <!-- ボタン -->
+                <div class="Process_Button_Wrapper">
+                    <a href="#" class="Button Button--primary">
+                        <span>制作過程を見る</span>
+                        <img src="./img/icon/Direction_ArrowRight.svg" alt="矢印アイコン" class="Button--icon icon">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        </div>
+        </section>
+
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__copyright">
+                <p class="footer__copyright-text">
+                    © 2025 HARUKA meta-PORTFOLIO. All rights reserved.
+                </p>
+            </div>
+            <div class="footer__social">
+                <p class="footer__social-label">ダミーリンク</p>
+                <ul class="footer__social-list">
+                    <li class="footer__social-item">
+                        <a href="#" class="footer__social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="X (旧Twitter)">
+                            <img src="./img/icon/Social_Twitter.svg" alt="Xのアイコン" class="footer__social-icon" />
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a href="#" class="footer__social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <img src="./img/icon/Social_Instagram.svg" alt="Instagramのアイコン"
+                                class="footer__social-icon" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
