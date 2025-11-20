@@ -104,33 +104,36 @@
                     </p>
                 </div>
 
-                <form id="contactForm" class="Contact_Form" action="contact-thanks.html" method="post">
-                    <div class="Contact_Form__field">
-                        <label for="name">氏名<span class="required">*</span></label>
-                        <input type="text" id="name" class="Contact_Form__input" placeholder="山田太郎" required>
-                    </div>
+                <form id="contact-form" class="Contact_Form" action="contact-thanks.html" method="get">
+  <div class="Contact_Form__field">
+    <label for="name">氏名<span class="required">*</span></label>
+    <input type="text" id="name" name="name"
+           class="Contact_Form__input" placeholder="山田太郎" required>
+  </div>
 
-                    <div class="Contact_Form__field">
-                        <label for="email">メールアドレス<span class="required">*</span></label>
-                        <input type="email" id="email" class="Contact_Form__input" placeholder="sample@gmail.jp"
-                            required>
-                    </div>
+  <div class="Contact_Form__field">
+    <label for="email">メールアドレス<span class="required">*</span></label>
+    <input type="email" id="email" name="email"
+           class="Contact_Form__input" placeholder="sample@gmail.jp" required>
+  </div>
 
-                    <div class="Contact_Form__field">
-                        <label for="subject">件名<span class="required">*</span></label>
-                        <input type="text" id="subject" class="Contact_Form__input" placeholder="WEBサイト制作依頼" required>
-                    </div>
+  <div class="Contact_Form__field">
+    <label for="subject">件名<span class="required">*</span></label>
+    <input type="text" id="subject" name="subject"
+           class="Contact_Form__input" placeholder="WEBサイト制作依頼" required>
+  </div>
 
-                    <div class="Contact_Form__field">
-                        <label for="message">本文<span class="required">*</span></label>
-                        <textarea id="message" class="Contact_Form__textarea" rows="5" placeholder="お問い合わせ内容を入力してください。"
-                            required></textarea>
-                    </div>
+  <div class="Contact_Form__field">
+    <label for="message">本文<span class="required">*</span></label>
+    <textarea id="message" name="message"
+              class="Contact_Form__textarea" rows="5"
+              placeholder="お問い合わせ内容を入力してください。" required></textarea>
+  </div>
 
-                    <div class="Contact_Form__button">
-                        <button type="submit" class="Button Button--primary">送信する</button>
-                    </div>
-                </form>
+  <div class="Contact_Form__button">
+    <button type="submit" class="Button Button--primary">送信する</button>
+  </div>
+</form>
 
 
 
