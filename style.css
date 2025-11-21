@@ -758,6 +758,10 @@ Section: Hero
   gap: 24px;
 }
 
+.Content_Hero_Main__description {
+  letter-spacing: -0.02rem;
+}
+
 .Content_Hero_Main__buttons {
   display: flex;
   gap: 16px;
@@ -1762,7 +1766,7 @@ Section: Hero
 }
 
 .Process_Nav_Item__Background02 {
-  background: #1c6f70 url(img/AllProcess_arrow-right/PC-01.svg) no-repeat center left 0;
+  background: #1d7071 url(img/AllProcess_arrow-right/PC-01.svg) no-repeat center left 0;
   background-size: 24px;
 }
 
@@ -1862,6 +1866,7 @@ Section: Hero
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 8px;
+  letter-spacing: -0.01rem;
 }
 
 .Process_Step__description {
